@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS housing_final (
+    ID INT,
+    City STRING,
+    BHK INT,
+    Size_in_SqFt INT,
+    Price_in_Lakhs DOUBLE,
+    Nearby_Schools INT,
+    Nearby_Hospitals INT,
+    YearBuilt INT,
+    Age_of_Property INT,
+    Public_Transport_Accessibility STRING,
+    Price_per_SqFt DOUBLE,
+    Avg_City_BHK_Price DOUBLE,
+    Is_Overpriced STRING,             
+    Is_Investment_Hotspot STRING,     
+    Is_Affordable_Housing STRING  
+)
+STORED AS PARQUET
+LOCATION '/user/hive/warehouse/housing_final';
+
+INSERT OVERWRITE TABLE housing_final
+SELECT * FROM housing_processed;
+
